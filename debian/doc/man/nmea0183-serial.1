@@ -1,0 +1,37 @@
+.\"                                      Hey, EMACS: -*- nroff -*-
+.\" (C) Copyright 2019 Philip J. Freeman <elektron@halo.nu>,
+.\"
+.TH IPTEE 1 "February  2 2019"
+.\" Please adjust this date whenever revising the manpage.
+.\"
+.SH NAME
+nmea0183-serial \- interface program to one nmea0183 serial port
+.SH SYNOPSIS
+.B nmea0183-serial
+.RI [ options ] " DEVICE"
+.SH DESCRIPTION
+This manual page documents briefly the
+.B nmea0183-serial
+command.
+.PP
+.B nmea0183-serial
+is a program that interfaces with a nmea0183 serial port
+.SH OPTIONS
+A summary of options is included below.
+.TP
+.B \-r
+read-only, do not pass stdin to stdout
+.TP
+.B \-d
+debug mode
+.TP
+.B \-version
+Print the version
+.TP
+.B DEVICE
+must be a serial device @38400:8:n:1
+.SH SEE ALSO
+.BR iptee (1).
+.br
+The program is documented fully by the GitHub project Wiki, here:
+https://github.com/canboat/canboat/wiki/nmea0183-serial

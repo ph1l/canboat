@@ -1,0 +1,39 @@
+.\"                                      Hey, EMACS: -*- nroff -*-
+.\" (C) Copyright 2019 Philip J. Freeman <elektron@halo.nu>,
+.\"
+.TH IPTEE 1 "February  2 2019"
+.\" Please adjust this date whenever revising the manpage.
+.\"
+.SH NAME
+iptee \- supply data to possibly failing TCP and UDP listeners
+.SH SYNOPSIS
+.B iptee
+[-w] [-t|-u] host port [host port ...] | -version
+.SH DESCRIPTION
+This manual page documents briefly the
+.B iptee
+command.
+.PP
+.B iptee
+has a single function: supply data to possibly failing TCP and UDP listeners.
+It can send data to 256 different listeners. It will reconnect to TCP and UDP
+servers when the connection fails.
+.SH OPTIONS
+A summary of options is included below.
+.TP
+.B \-w
+Do not forward stdin to stdout
+.TP
+.B \-t
+Make a TCP Connection
+.TP
+.B \-u
+Make a UDP Connection
+.TP
+.B \-version
+Print the version
+.SH SEE ALSO
+.BR nmea0183-serial (1).
+.br
+The program is documented fully by the GitHub project Wiki, here:
+https://github.com/canboat/canboat/wiki/iptee

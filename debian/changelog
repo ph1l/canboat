@@ -1,0 +1,5 @@
+canboat (1.2.1-1) unstable; urgency=medium
+
+  * Initial release (Closes: #921311 )
+
+ -- Philip J. Freeman <elektron@halo.nu>  Sat, 02 Feb 2019 10:11:30 -0800

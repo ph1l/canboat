@@ -1,0 +1,50 @@
+From aa004f86f17ffd0f9509bbc795a7bc86275317b2 Mon Sep 17 00:00:00 2001
+From: Philip J Freeman <elektron@halo.nu>
+Date: Sat, 2 Feb 2019 12:13:08 -0800
+Subject: [PATCH] [n2kd] Support pos update from PGN 129025
+
+My AIS only publishes position updates on PGN 129025 (not PGN 129029.) This
+patch make n2kd output the nmea0183 GLL Sentence.
+---
+ n2kd/nmea0183.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/n2kd/nmea0183.c b/n2kd/nmea0183.c
+index 0146a14..80bd32f 100644
+--- a/n2kd/nmea0183.c
++++ b/n2kd/nmea0183.c
+@@ -71,6 +71,7 @@ extern bool  rateLimit;
+  Parameters","fields":{"SID":222,"Temperature Source":"Sea Temperature","Temperature":17.16}}
+  * {"timestamp":"2016-04-20T21:03:57.631Z","prio":6,"src":35,"dst":255,"pgn":128275,"description":"Distance
+  Log","fields":{"Log":57688,"Trip Log":57688}}
++ * {"timestamp":"2019-02-02T19:45:02.051Z","prio":2,"src":43,"dst":255,"pgn":129025,"description":"Position, Rapid Update","fields":{"Latitude":37.8670000,"Longitude":-122.3150000}}
+  */
+ 
+ #define PGN_VESSEL_HEADING (127250)
+@@ -83,6 +84,7 @@ extern bool  rateLimit;
+ #define PGN_SOG_COG (129026)
+ #define PGN_GPS_DOP (129539)
+ #define PGN_POSITION (129029)
++#define PGN_POSITION_RAPID (129025)
+ #define PGN_AIS_A (129038)
+ #define PGN_AIS_B (129039)
+ 
+@@ -550,6 +552,7 @@ void convertJSONToNMEA0183(StringBuffer *msg183, const char *msg)
+       rateType = RATE_GPS_DOP;
+       break;
+     case PGN_POSITION:
++    case PGN_POSITION_RAPID:
+       rateType = RATE_GPS_POSITION;
+       break;
+     case PGN_AIS_A:
+@@ -615,6 +618,7 @@ void convertJSONToNMEA0183(StringBuffer *msg183, const char *msg)
+       nmea0183GSA(msg183, src, msg);
+       break;
+     case PGN_POSITION:
++    case PGN_POSITION_RAPID:
+       nmea0183GLL(msg183, src, msg);
+       break;
+     case PGN_AIS_A:
+-- 
+2.20.1
+

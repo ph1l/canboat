@@ -1,0 +1,28 @@
+From 1345f17b1df4bc5c27df2e8e807f71b081cf067c Mon Sep 17 00:00:00 2001
+From: Philip J Freeman <elektron@halo.nu>
+Date: Sun, 3 Feb 2019 20:52:01 -0800
+Subject: [PATCH] fix invalid option in n2kd config file
+
+---
+ config/n2kd | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/config/n2kd b/config/n2kd
+index f5b992e..921c35f 100644
+--- a/config/n2kd
++++ b/config/n2kd
+@@ -1,9 +1,9 @@
+ # CAN_INTERFACE=<network_interface>
+ # OR
+-# ACTISENSE_PRIMARY_DEVICE=<devicename>
++# ACTISENSE_PRIMARY=<devicename>
+ 
+ # OPTIONAL OPTIONS:
+-# ACTISENSE_SECONDARY_DEVICE=<devicename>
++# ACTISENSE_SECONDARY=<devicename>
+ # MONITOR=false
+ # N2KD_OPTIONS=
+ # ANALYZER_OPTIONS=
+-- 
+2.20.1
+

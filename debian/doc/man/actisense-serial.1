@@ -1,0 +1,63 @@
+.\"                                      Hey, EMACS: -*- nroff -*-
+.\" (C) Copyright 2019 Philip J. Freeman <elektron@halo.nu>,
+.\"
+.TH ACTISENSE-SERIAL 1 "February  2 2019"
+.\" Please adjust this date whenever revising the manpage.
+.\"
+.\" Some roff macros, for reference:
+.\" .nh        disable hyphenation
+.\" .hy        enable hyphenation
+.\" .ad l      left justify
+.\" .ad b      justify to both left and right margins
+.\" .nf        disable filling
+.\" .fi        enable filling
+.\" .br        insert line break
+.\" .sp <n>    insert n+1 empty lines
+.\" for manpage-specific macros, see man(7)
+.SH NAME
+actisense-serial \- interface program to one Actisense NGT-1 USB or serial
+.SH SYNOPSIS
+.B actisense-serial
+.RI [ options ] " DEVICE"
+.SH DESCRIPTION
+This manual page documents briefly the
+.B actisense-serial
+command.
+.PP
+.B actisense-serial
+is a program that interfaces with a Actisense NGT-1 USB or serial device.
+.SH OPTIONS
+A summary of options is included below.
+.TP
+.B \-w
+writeonly mode, no data is read from device
+.TP
+.B \-r
+readonly mode, no data is sent to device
+.TP
+.B \-p
+passthru mode, data on stdin is sent to stdout but not to device
+.TP
+.B \-v
+enable verbose mode
+.TP
+.B \-d
+enable debug mode
+.TP
+.B \-s <n>
+set baudrate to 38400, 57600, 115200 or 230400
+.TP
+.B \-t <n>
+timeout, if no message is received after <n> seconds the program quits
+.TP
+.B \-version
+Print the version
+.TP
+.B DEVICE
+can be a serial device, a normal file containing a raw log, or the address of a TCP server in the format tcp://<host>[:<port>]
+.SH SEE ALSO
+.BR analyzer (1),
+.BR n2kd (1).
+.br
+The program is documented fully by the GitHub project Wiki, here:
+https://github.com/canboat/canboat/wiki/actisense-serial

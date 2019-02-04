@@ -1,0 +1,7 @@
+debian/doc/man/actisense-serial.1
+debian/doc/man/analyzer.1
+debian/doc/man/n2kd.1
+debian/doc/man/n2kd_monitor.1
+debian/doc/man/nmea0183-serial.1
+debian/doc/man/iptee.1
+debian/doc/man/list-product-information.1

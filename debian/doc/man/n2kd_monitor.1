@@ -1,0 +1,38 @@
+.\"                                      Hey, EMACS: -*- nroff -*-
+.\" (C) Copyright 2019 Philip J. Freeman <elektron@halo.nu>,
+.\"
+.TH N2KD_MONITOR 1 "February  2 2019"
+.\" Please adjust this date whenever revising the manpage.
+.\"
+.SH NAME
+n2kd_monitor \- service monitor to maintain the CANboat pipeline
+.SH SYNOPSIS
+.B n2kd_monitor
+.SH DESCRIPTION
+This manual page documents briefly the
+.B n2kd_monitor
+command.
+.PP
+.B n2kd
+is a program that keeps a pipeline running for monitoring the NMEA2K network. It takes no options or arguments and is configured with it's config file in /etc/default/n2kd.
+.B CAN_INTERFACE
+or
+.B ACTISENSE_PRIMARY
+should be set to the device you wish to read/write from the can (N2K) network. Leave out
+.B ACTISENSE_SECONDARY
+if you have only one Actisense gateway. Leave
+.B MONITOR
+set to false for now; its contents have not been open sourced yet.
+.B ANALYZER_OPTIONS
+and/or
+.B N2KD_OPTIONS
+can be used to pass additional options to those processes.
+.SH OPTIONS
+None
+.SH SEE ALSO
+.BR actisense-serial (1),
+.BR analyzer (1),
+.BR n2kd (1).
+.br
+The program is documented fully by the GitHub project Wiki, here:
+https://github.com/canboat/canboat/wiki/n2kd_monitor

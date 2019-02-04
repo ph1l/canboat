@@ -1,0 +1,7 @@
+CANboat for Debian
+-----------------
+
+ The CANboat package contains utilities to interface with NMEA 2000 and NMEA
+0183 networks with your computer.
+
+ -- Philip J. Freeman <elektron@halo.nu>  Sat, 02 Feb 2019 10:11:30 -0800
