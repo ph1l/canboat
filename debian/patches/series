@@ -3,3 +3,4 @@ n2kd-Support-pos-update-from-PGN-129025.patch
 other_makefile_cleanup.patch
 fix-invalid-option-in-n2kd-config-file.patch
 fix-interpreter-paths.patch
+fix-n2kd_monitor-forking-bug.patch

@@ -1,0 +1,57 @@
+From 501d689d22fac9f69045c3516e91e931eebbd338 Mon Sep 17 00:00:00 2001
+From: Philip J Freeman <elektron@halo.nu>
+Date: Sun, 3 Feb 2019 23:08:19 -0800
+Subject: [PATCH] fix n2kd_monitor forking bug
+
+Looks like your test `(time > $last_monitor + 30)` isn't doing what you expect
+it to:
+
+```
+svzeno@navigation:~$ perl -e 'printf("%d > %d\n", time, LONG_MAX+30);'
+1549263734 > 30
+```
+
+So rather than doing some clever thing like setting the timestamp to the max
+value, I just added a different variable to store the boolean for do or don't
+do. In the event that you did successfully set the `last_monitor` variable to
+maxint, what would maxint+30 evaluate to in perl?
+
+fixes canboat/canboat#93
+---
+ n2kd/n2kd_monitor | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/n2kd/n2kd_monitor b/n2kd/n2kd_monitor
+index f8cfd42..294c6c3 100755
+--- a/n2kd/n2kd_monitor
++++ b/n2kd/n2kd_monitor
+@@ -72,11 +72,16 @@ my $monitor;
+ my $child;
+ my $stop = 0;
+ my $last_monitor = 0;
++my $do_monitor;
+ 
+ if ($MONITOR ne "true" && $MONITOR ne "yes")
+ {
+   # Disable the monitoring part. This is not open source yet, so disable it by default.
+-  $last_monitor = LONG_MAX;
++  $do_monitor = 0;
++}
++else
++{
++  $do_monitor = 1;
+ }
+ 
+ use POSIX();
+@@ -225,7 +230,7 @@ for (;;)
+       }
+       sleep(15);
+     }
+-    if (!$monitor && (time > $last_monitor + 30))
++    if ($do_monitor && !$monitor && (time > $last_monitor + 30))
+     {
+       $last_monitor = time;
+       if (($monitor = fork()) == 0)
+-- 
+2.20.1
+
